@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DASHBOARD UMKM DESA DARMAJAYA</title>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="fontawesome/css/all.min.css" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand" href="#">
+					<img
+						src="pemda_logo.jpg"
+						alt=""
+						width="30"
+						height="24"
+						class="d-inline-block align-text-top"
+					/>
+					<b>DESA DARMAJAYA</b>
+				</a>
+			</div>
+		</nav>
+		<div class="mt-5 text-center">
+			<img
+				src="umkm_logo.png"
+				width="100"
+				height="50"
+				style="object-fit: contain"
+			/>
+			<span style="vertical-align: -10px">
+				<h3 class="d-inline">DASHBOARD UMKM</h3>
+			</span>
+		</div>
+		<div class="container mt-5">
+			<!-- Angka Statistik-->
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card bg-success text-white">
+						<div class="card-body">
+							<h5 class="card-title">Jumlah UMKM</h5>
+							<i class="d-inline fa fa-shopping-cart"></i>
+							<span class="d-inline">153</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card bg-info text-white">
+						<div class="card-body">
+							<h5 class="card-title">Bidang Usaha</h5>
+							<i class="d-inline fa fa-tag"></i>
+							<span class="d-inline">8</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card bg-warning text-white">
+						<div class="card-body">
+							<h5 class="card-title">UMKM Berizin</h5>
+							<i class="d-inline fa fa-file-contract"></i>
+							<span class="d-inline">89</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Chart-->
+			<div class="row mt-5">
+				<div class="col-md-4">
+					<div class="card border-secondary" style="width: 100%">
+						<div class="card-body">
+							<h5 class="card-title">Dusun</h5>
+							<div id="dusun"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card border-secondary" style="width: 100%">
+						<div class="card-body">
+							<h5 class="card-title">Jenis Kelamin Pemilik</h5>
+							<div id="jenis_kelamin"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card border-secondary" style="width: 100%">
+						<div class="card-body">
+							<h5 class="card-title">Terdigitalisasi</h5>
+							<div id="terdigitalisasi"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-md-12">
+					<div class="card border-dark" style="width: 100%">
+						<div class="card-body">
+							<h5 class="card-title">RW</h5>
+							<div id="rw"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-md-12">
+					<div class="card border-dark" style="width: 100%">
+						<div class="card-body">
+							<h5 class="card-title">Bidang</h5>
+							<div id="bidang"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <footer class="text-muted py-5">
+            <div class="container">
+              <p class="text-center mb-1">
+                &copy; DESA DARMAJAYA
+              </p>
+            </div>
+          </footer>
+
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="fontawesome/js/all.min.js"></script>
+		<script src="apexcharts/dist/apexcharts.min.js"></script>
+
+		<script>
+			//Chart RW
+			var options = {
+				series: [
+					{
+						name: "Jumlah UMKM",
+						data: [40, 21, 38, 15, 19, 20],
+					},
+				],
+				chart: {
+					height: 350,
+					type: "bar",
+				},
+				plotOptions: {
+					bar: {
+						borderRadius: 10,
+						dataLabels: {
+							position: "top", // top, center, bottom
+						},
+					},
+				},
+				dataLabels: {
+					enabled: true,
+					formatter: function (val) {
+						return val;
+					},
+					offsetY: -20,
+					style: {
+						fontSize: "12px",
+						colors: ["#304758"],
+					},
+				},
+
+				xaxis: {
+					categories: ["RW01", "RW02", "RW03", "RW04", "RW05", "RW06"],
+					position: "top",
+					axisBorder: {
+						show: false,
+					},
+					axisTicks: {
+						show: false,
+					},
+					crosshairs: {
+						fill: {
+							type: "gradient",
+							gradient: {
+								colorFrom: "#D8E3F0",
+								colorTo: "#BED1E6",
+								stops: [0, 100],
+								opacityFrom: 0.4,
+								opacityTo: 0.5,
+							},
+						},
+					},
+					tooltip: {
+						enabled: true,
+					},
+				},
+				yaxis: {
+					max: 50,
+					axisBorder: {
+						show: false,
+					},
+					axisTicks: {
+						show: false,
+					},
+					labels: {
+						show: false,
+						formatter: function (val) {
+							return val;
+						},
+					},
+				},
+			};
+
+			var chart = new ApexCharts(document.querySelector("#rw"), options);
+			chart.render();
+
+			//Chart Dusun
+			var options = {
+				series: [98, 55],
+				chart: {
+					type: "donut",
+				},
+				labels: ["Cipacing", "Kebonbuah"],
+				responsive: [
+					{
+						breakpoint: 480,
+						options: {
+							chart: {
+								width: 200,
+							},
+							legend: {
+								position: "bottom",
+							},
+						},
+					},
+				],
+			};
+
+			var chart = new ApexCharts(document.querySelector("#dusun"), options);
+			chart.render();
+
+			//Chart Jenis Kelamin
+			var options = {
+				series: [120, 33],
+				chart: {
+					type: "donut",
+				},
+				labels: ["Laki-laki", "Perempuan"],
+				responsive: [
+					{
+						breakpoint: 480,
+						options: {
+							chart: {
+								width: 200,
+							},
+							legend: {
+								position: "bottom",
+							},
+						},
+					},
+				],
+			};
+
+			var chart = new ApexCharts(
+				document.querySelector("#jenis_kelamin"),
+				options
+			);
+			chart.render();
+
+			//Chart Terdigitalisasi
+			var options = {
+				series: [20, 133],
+				chart: {
+					type: "donut",
+				},
+				labels: ["Sudah Bisa", "Belum"],
+				responsive: [
+					{
+						breakpoint: 480,
+						options: {
+							chart: {
+								width: 200,
+							},
+							legend: {
+								position: "bottom",
+							},
+						},
+					},
+				],
+			};
+
+			var chart = new ApexCharts(
+				document.querySelector("#terdigitalisasi"),
+				options
+			);
+			chart.render();
+
+			//Chart Bidang
+			var options = {
+				series: [
+					{
+						data: [20, 20, 20, 20, 20, 20, 20, 13],
+					},
+				],
+				chart: {
+					type: "bar",
+					height: 350,
+				},
+				plotOptions: {
+					bar: {
+						borderRadius: 4,
+						horizontal: true,
+					},
+				},
+				dataLabels: {
+					enabled: false,
+				},
+				xaxis: {
+					categories: [
+						"Industri Pengolahan",
+						"Konstruksi",
+						"Pengangkutan, Pergudangan",
+						"Penyedia Akomodasi",
+						"Penyedia Makan Minum",
+						"Kesenian, Hiburan dan Rekreasi",
+                        "Real Estat",
+                        "Informasi dan Komunikasi"
+					],
+				},
+			};
+
+			var chart = new ApexCharts(document.querySelector("#bidang"), options);
+			chart.render();
+		</script>
+	</body>
+</html>
